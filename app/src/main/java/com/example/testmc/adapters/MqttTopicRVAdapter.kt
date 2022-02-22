@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testmc.R
@@ -61,16 +62,25 @@ class MqttTopicRVAdapter(private val context: Context, private val listener: IMq
                 listener.onPublish(allTopics[adapterPosition], publishEditText.text)
                 publishEditText.text.clear()
             }
+            val deleteBtn: ImageView =  itemView.findViewById<ImageView>(R.id.deleteButton)
+            deleteBtn.setOnClickListener {
+                listener.deleteTopic(allTopics[adapterPosition])
+            }
+
         }
 
         private fun bindSub(item: MqttTopic) {
             itemView.findViewById<TextView>(R.id.title).text = "Subscribe - Topic: ${item.topicName}"
             val subscribeTextView: TextView = itemView.findViewById<TextView>(R.id.subscribedText)
             listener.setSubscribeCallback(allTopics[adapterPosition], subscribeTextView)
+            val deleteBtn: ImageView =  itemView.findViewById<ImageView>(R.id.deleteButton)
+            deleteBtn.setOnClickListener {
+                listener.deleteTopic(allTopics[adapterPosition])
+            }
         }
 
         private fun bindPubStream(item: MqttTopic) {
-            itemView.findViewById<TextView>(R.id.title).text = "Publish Stream - Topic: ${item.topicName}"
+            itemView.findViewById<TextView>(R.id.title).text = "PubStream - Topic: ${item.topicName}"
 
             val startBtn: Button =  itemView.findViewById<Button>(R.id.startBtn)
             val stopBtn: Button =  itemView.findViewById<Button>(R.id.stopBtn)
@@ -83,6 +93,10 @@ class MqttTopicRVAdapter(private val context: Context, private val listener: IMq
             }
             stopBtn.setOnClickListener {
                 listener.onStopPublishStream(uuid)
+            }
+            val deleteBtn: ImageView =  itemView.findViewById<ImageView>(R.id.deleteButton)
+            deleteBtn.setOnClickListener {
+                listener.deleteTopic(allTopics[adapterPosition])
             }
         }
 
@@ -125,6 +139,8 @@ class MqttTopicRVAdapter(private val context: Context, private val listener: IMq
 interface IMqttTopicRVAdapter {
     fun onPublish(mqttTopic: MqttTopic, publishText: CharSequence)
     fun setSubscribeCallback(mqttTopic: MqttTopic, textView: TextView)
-    fun onStartPublishStream(mqttTopic: MqttTopic, loTrsh: Int, hiTrsh: Int, delaySec: Double, uuid: UUID)
+    fun onStartPublishStream(mqttTopic: MqttTopic, loTrsh: Int,
+                             hiTrsh: Int, delaySec: Double, uuid: UUID)
     fun onStopPublishStream(uuid: UUID)
+    fun deleteTopic(mqttTopic: MqttTopic)
 }

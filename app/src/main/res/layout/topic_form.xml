@@ -8,12 +8,12 @@
     android:layout_marginEnd="16dp">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/connNameTxtLayout"
+        android:id="@+id/topNameTxtLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="@string/conn_name"
+        android:hint="Topic"
         tools:endIconMode="clear_text"
         tools:helperTextTextColor="@color/red"
         >
@@ -31,77 +31,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Client ID"
-        tools:endIconMode="clear_text"
         tools:helperTextTextColor="@color/red"
         >
-
-        <EditText
-            android:id="@+id/clientID"
+        <TextView
+            android:paddingLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Panel Type"
+            android:paddingBottom="10dp"/>
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/brokerIPTxtLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/broker_ip"
-        tools:endIconMode="clear_text"
-        tools:helperTextTextColor="@color/red"
-        >
-
-        <EditText
-            android:id="@+id/brokerIP"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/portNumTxtLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/port_num"
-        tools:endIconMode="clear_text"
-        tools:helperTextTextColor="@color/red"
-        >
-
-        <EditText
-            android:id="@+id/portNum"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/userNameTxtLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Username (optional)"
-        tools:endIconMode="clear_text"
-        tools:helperTextTextColor="@color/red"
-        >
-
-        <EditText
-            android:id="@+id/userName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/passwordTxtLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Password (optional)"
-        tools:endIconMode="clear_text"
-        tools:helperTextTextColor="@color/red"
-        >
-
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+            android:orientation="vertical">
+            <RadioButton android:id="@+id/radio_publish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Publish"
+                android:onClick="onRadioButtonClicked"/>
+            <RadioButton android:id="@+id/radio_subscribe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subscribe"
+                android:onClick="onRadioButtonClicked"/>
+            <RadioButton android:id="@+id/radio_pubstr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Publish Stream"
+                android:onClick="onRadioButtonClicked"/>
+        </RadioGroup>
     </com.google.android.material.textfield.TextInputLayout>
 </androidx.appcompat.widget.LinearLayoutCompat>

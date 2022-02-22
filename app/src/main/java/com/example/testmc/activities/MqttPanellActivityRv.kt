@@ -1,5 +1,6 @@
 package com.example.testmc.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
@@ -66,10 +67,6 @@ class MqttPanellActivityRv : AppCompatActivity(), IMqttTopicRVAdapter {
         )
         mqttConnection.id = intent.getIntExtra(UpdateConnectionActivity.CONN_ID, 0)
         mqttClient = MqttClientHelper(this, mqttConnection)
-
-        viewModel.insertMqttTopic(MqttTopic("rd_sensors", TopicType.PUB, 0, mqttConnection.id))
-        viewModel.insertMqttTopic(MqttTopic("rd_sensors", TopicType.SUB, 0, mqttConnection.id))
-        viewModel.insertMqttTopic(MqttTopic("rd_sensors", TopicType.PUB_STR, 0, mqttConnection.id))
 
         val recyclerView = findViewById<RecyclerView>(R.id.topicRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -157,5 +154,14 @@ class MqttPanellActivityRv : AppCompatActivity(), IMqttTopicRVAdapter {
     override fun onStopPublishStream(uuid: UUID) {
         val job = jobs.remove(uuid)
         job?.cancel()
+    }
+
+    override fun deleteTopic(mqttTopic: MqttTopic) {
+        viewModel.deleteMqttTopic(mqttTopic)
+    }
+
+    fun createNewTopic(view: android.view.View) {
+        val intent = Intent(this, AddTopicActivity::class.java)
+        startActivity(intent)
     }
 }

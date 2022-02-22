@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestMC">
         <activity
+            android:name=".activities.AddTopicActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.MqttPanellActivityRv"
             android:exported="false"
             android:label="@string/title_activity_mqtt_panell_rv"
