@@ -45,6 +45,7 @@ dependencies {
     implementation "androidx.room:room-common:$rootProject.room_version"
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    implementation 'androidx.test.espresso:espresso-contrib:3.4.0'
     kapt "androidx.room:room-compiler:$rootProject.room_version"
     implementation "androidx.room:room-ktx:$rootProject.room_version"
     testImplementation "junit:junit:$rootProject.junit_version"
@@ -54,6 +55,8 @@ dependencies {
     implementation "androidx.arch.core:core-testing:2.1.0"
     implementation 'javax.inject:javax.inject:1'
     androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espresso_version"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$rootProject.espresso_version"
+    androidTestImplementation 'androidx.test:rules:1.2.0'
 
     // Lifecycle components
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleVersion"
