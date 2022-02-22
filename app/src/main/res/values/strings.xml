@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">TestMC</string>
+    <string-array name="protocols">
+        <item>TCP</item>
+    </string-array>
+    <string name="conn_name">Connection name<font color='#FF0000'>*</font></string>
+    <string name="broker_ip">Broker IP<font color='#FF0000'>*</font></string>
+    <string name="port_num">Port number<font color='#FF0000'>*</font></string>
+    <string name="title_activity_mqtt_panell_rv">MqttPanellActivityRv</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+</resources>

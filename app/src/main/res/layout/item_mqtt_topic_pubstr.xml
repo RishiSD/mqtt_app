@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="12dp">
+    <TextView
+        android:id="@+id/title"
+        android:textStyle="bold"
+        android:textColor="@color/purple_200"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Publish Topic: Sensors"
+        android:layout_marginBottom="10dp"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/lowValLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="10dp"
+        android:layout_width="0dp"
+        android:hint="Lower Threshold"
+        tools:endIconMode="clear_text"
+        tools:helperTextTextColor="@color/red"
+        app:layout_constraintEnd_toStartOf="@id/upValLayout">
+        <EditText
+            android:id="@+id/lowerValue"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/upValLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintStart_toEndOf="@+id/lowValLayout"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        android:hint="Upper Threshold"
+        tools:endIconMode="clear_text"
+        tools:helperTextTextColor="@color/red"
+        android:layout_width="0dp">
+
+
+        <EditText
+            android:id="@+id/upperValue"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/delayLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintTop_toBottomOf="@id/upValLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        tools:endIconMode="clear_text"
+        android:hint="Delay (s)"
+        tools:helperTextTextColor="@color/red">
+
+        <EditText
+            android:id="@+id/delay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/preTxtLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintTop_toBottomOf="@id/delayLayout"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="10dp"
+        android:layout_width="0dp"
+        android:hint="Pre-text (Optional)"
+        tools:endIconMode="clear_text"
+        tools:helperTextTextColor="@color/red"
+        app:layout_constraintEnd_toStartOf="@id/postTxtLayout">
+        <EditText
+            android:id="@+id/preTxt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/postTxtLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintTop_toBottomOf="@id/delayLayout"
+        app:layout_constraintStart_toEndOf="@+id/preTxtLayout"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="Post-text (Optional)"
+        tools:endIconMode="clear_text"
+        tools:helperTextTextColor="@color/red"
+        android:layout_width="0dp">
+
+
+        <EditText
+            android:id="@+id/postTxt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <Button
+        android:id="@+id/startBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/preTxtLayout"
+        android:text="Start"
+        app:layout_constraintEnd_toStartOf="@id/stopBtn"
+        android:onClick="publishStream"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        />
+    <Button
+        android:id="@+id/stopBtn"
+        app:layout_constraintTop_toBottomOf="@+id/preTxtLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stop"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:onClick="stopPublishStream"
+        android:layout_marginTop="10dp"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
